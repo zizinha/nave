@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Jogo</title>
+    <script src="gamesWeb.js"></script>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff; /* Optional: background color for the whole page */
+        }
+        canvas {
+            background-image: url('cenario2game.png'); /* Background image for the canvas */
+            background-size: cover; /* Ensure the background image covers the canvas */
+            background-repeat: no-repeat; /* Prevent the background image from repeating */
+            background-position: center; /* Center the background image */
+            border: 1px solid #000; /* Optional: border around the canvas */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canv" width="1350" height="767">
+    </canvas>
+    <script>
+        canvas = document.getElementById("canv");
+        ctx = canvas.getContext("2d");
+
+        nave = new Image();
+        nave.src = "aeronavefinalizada2.png";
+        nave.onload = function() {
+            xNave = canvas.width / 2 - nave.width / 2;
+            yNave = canvas.height - nave.height;
+            ctx.drawImage(nave, xNave, yNave);
+        }
+
+        inimigo = new Image();
+        inimigo.src = "aeronavevilaoprabaixo.png";
+        inimigo.onload = function() {
+            xInimigo = canvas.width / 2 - nave.width / 2;
+            yInimigo = -50;
+            ctx.drawImage(inimigo, xInimigo, yInimigo);
+        }
+
+        document.addEventListener("keydown", function(evento) {
+            movimentaNaveInimigo(evento.key);
+        });
+    </script>
+</body>
+</html>
